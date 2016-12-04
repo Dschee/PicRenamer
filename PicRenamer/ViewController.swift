@@ -23,11 +23,17 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTabViewDelegate
     @IBOutlet weak var table: NSTableView!
     @IBOutlet weak var renameButton: NSButton?
     @IBOutlet weak var progressIndicator: NSProgressIndicator?
+    @IBOutlet weak var imagesCountLabel: NSTextField?
     var fileURLGroups = Array<FileURLGroup>()
     
     func updateUI(){
         self.table.reloadData()
+        self.updateImagesCount()
         self.table.setNeedsDisplay()
+    }
+
+    func updateImagesCount() {
+        self.imagesCountLabel?.stringValue = "\(self.table.numberOfRows) images"
     }
     
     @IBAction func openFiles(_ sender: NSButton) {
@@ -43,6 +49,7 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTabViewDelegate
                     self.renameButton?.isEnabled = false
                     self.progressIndicator?.isHidden = false
                     self.progressIndicator?.startAnimation(nil)
+                    self.imagesCountLabel?.isHidden = false
 
                     DispatchQueue.global(qos: .userInteractive).async {
 
@@ -122,6 +129,7 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTabViewDelegate
     @IBAction func clearFiles(_ sender: NSButton) {
         self.fileURLGroups.removeAll(keepingCapacity: false)
         self.updateUI()
+        self.imagesCountLabel?.isHidden = true
     }
     
     func numberOfRows(in tableView: NSTableView) -> Int {

@@ -444,11 +444,11 @@
             <objects>
                 <viewController id="YNJ-LP-UIo" customClass="ViewController" customModule="PicRenamer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="RCi-8l-IGj">
-                        <rect key="frame" x="0.0" y="0.0" width="500" height="400"/>
+                        <rect key="frame" x="0.0" y="0.0" width="500" height="447"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <visualEffectView appearanceType="vibrantLight" blendingMode="behindWindow" material="appearanceBased" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="yFT-zd-ms8">
-                                <rect key="frame" x="0.0" y="0.0" width="500" height="400"/>
+                                <rect key="frame" x="0.0" y="0.0" width="500" height="447"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ncu-yx-8Ol">
                                         <rect key="frame" x="115" y="9" width="80" height="25"/>
@@ -484,13 +484,13 @@
                                         </connections>
                                     </button>
                                     <scrollView autohidesScrollers="YES" horizontalLineScroll="23" horizontalPageScroll="10" verticalLineScroll="23" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z3o-Pj-iI6">
-                                        <rect key="frame" x="20" y="40" width="460" height="340"/>
+                                        <rect key="frame" x="20" y="43" width="460" height="384"/>
                                         <clipView key="contentView" drawsBackground="NO" id="2Mf-ov-eZr">
-                                            <rect key="frame" x="1" y="0.0" width="458" height="339"/>
+                                            <rect key="frame" x="1" y="0.0" width="458" height="383"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <tableView focusRingType="none" appearanceType="vibrantLight" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" headerView="LSp-bQ-ZU4" id="4qC-Ms-ieM">
-                                                    <rect key="frame" x="0.0" y="0.0" width="458" height="316"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="458" height="360"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <size key="intercellSpacing" width="3" height="6"/>
                                                     <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -532,9 +532,6 @@
                                             </subviews>
                                             <nil key="backgroundColor"/>
                                         </clipView>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="340" id="5En-e1-xab"/>
-                                        </constraints>
                                         <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="9cV-kG-hKE">
                                             <rect key="frame" x="1" y="119" width="223" height="15"/>
                                             <autoresizingMask key="autoresizingMask"/>
@@ -548,19 +545,39 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableHeaderView>
                                     </scrollView>
-                                    <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="QHO-OS-ErV">
+                                    <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="QHO-OS-ErV">
                                         <rect key="frame" x="376" y="13" width="16" height="16"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="16" id="f7b-WJ-clm"/>
+                                            <constraint firstAttribute="height" constant="16" id="gxP-Qe-4qa"/>
+                                        </constraints>
                                     </progressIndicator>
+                                    <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3CV-4G-4XD">
+                                        <rect key="frame" x="201" y="13" width="169" height="17"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="165" id="Baw-bg-IU1"/>
+                                            <constraint firstAttribute="height" constant="17" id="bGm-7i-S5G"/>
+                                        </constraints>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="no images" id="t2P-j6-4hq">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="z3o-Pj-iI6" secondAttribute="trailing" constant="20" id="LKC-T5-qc9"/>
                                     <constraint firstAttribute="bottom" secondItem="TPE-nc-3FZ" secondAttribute="bottom" constant="10" id="Ps8-I8-Jic"/>
                                     <constraint firstItem="Ncu-yx-8Ol" firstAttribute="width" secondItem="TPE-nc-3FZ" secondAttribute="width" id="TVV-77-PjO"/>
+                                    <constraint firstAttribute="bottom" secondItem="z3o-Pj-iI6" secondAttribute="bottom" constant="43" id="TlW-4X-jPh"/>
+                                    <constraint firstItem="QHO-OS-ErV" firstAttribute="leading" secondItem="3CV-4G-4XD" secondAttribute="trailing" constant="8" id="ULn-lo-dGa"/>
                                     <constraint firstItem="Ncu-yx-8Ol" firstAttribute="width" secondItem="mUH-MG-sRb" secondAttribute="width" id="XWh-Zs-zgU"/>
                                     <constraint firstAttribute="trailing" secondItem="TPE-nc-3FZ" secondAttribute="trailing" constant="20" id="aZs-v2-lMm"/>
                                     <constraint firstItem="z3o-Pj-iI6" firstAttribute="top" secondItem="yFT-zd-ms8" secondAttribute="top" constant="20" id="bAY-So-m3c"/>
+                                    <constraint firstItem="TPE-nc-3FZ" firstAttribute="leading" secondItem="QHO-OS-ErV" secondAttribute="trailing" constant="8" id="cIg-jM-MfS"/>
                                     <constraint firstAttribute="bottom" secondItem="mUH-MG-sRb" secondAttribute="bottom" constant="10" id="d5y-Je-ThV"/>
+                                    <constraint firstAttribute="bottom" secondItem="3CV-4G-4XD" secondAttribute="bottom" constant="13" id="ejF-NS-rLh"/>
+                                    <constraint firstAttribute="bottom" secondItem="QHO-OS-ErV" secondAttribute="bottom" constant="13" id="f6e-xg-HtU"/>
                                     <constraint firstAttribute="bottom" secondItem="Ncu-yx-8Ol" secondAttribute="bottom" constant="11" id="jQ4-so-4tx"/>
                                     <constraint firstItem="Ncu-yx-8Ol" firstAttribute="leading" secondItem="mUH-MG-sRb" secondAttribute="trailing" constant="15" id="xDV-1t-Wwl"/>
                                     <constraint firstItem="z3o-Pj-iI6" firstAttribute="leading" secondItem="yFT-zd-ms8" secondAttribute="leading" constant="20" id="yCr-MD-FrX"/>
@@ -576,6 +593,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="imagesCountLabel" destination="3CV-4G-4XD" id="LMv-hL-v7I"/>
                         <outlet property="progressIndicator" destination="QHO-OS-ErV" id="ytC-lt-u2F"/>
                         <outlet property="renameButton" destination="TPE-nc-3FZ" id="igl-US-1LH"/>
                         <outlet property="table" destination="4qC-Ms-ieM" id="LFK-I6-sdC"/>
@@ -583,7 +601,7 @@
                 </viewController>
                 <customObject id="JDg-oa-BpI" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="87" y="910"/>
+            <point key="canvasLocation" x="87" y="933.5"/>
         </scene>
     </scenes>
 </document>
