@@ -58,7 +58,9 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTabViewDelegate
                             let imageData = NSData(contentsOf: URL as URL)
                             let imageSource = CGImageSourceCreateWithData(CFBridgingRetain(imageData) as! CFData, nil)
                             let metaDictionary = CGImageSourceCopyPropertiesAtIndex(imageSource!, 0, nil) as! NSDictionary
-                            let exifData = metaDictionary["{Exif}"] as! NSDictionary
+                            guard let exifData = metaDictionary["{Exif}"] as? NSDictionary else {
+                                continue
+                            }
 
                             if let dateStringCapture = exifData["DateTimeDigitized"] as? String ?? exifData["DateTimeOriginal"] as? String {
 
