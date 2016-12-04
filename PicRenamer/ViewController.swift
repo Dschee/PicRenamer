@@ -29,7 +29,7 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTabViewDelegate
     }
     
     @IBAction func openFiles(_ sender: NSButton) {
-        var openPanel = NSOpenPanel()
+        let openPanel = NSOpenPanel()
         openPanel.allowedFileTypes = NSImage.imageFileTypes()
         openPanel.allowsMultipleSelection = true
         
@@ -38,37 +38,35 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTabViewDelegate
                 
                 if result == NSOKButton {
                     
-                    for object in openPanel.urls {
-                        if let URL = object as? NSURL {
+                    for URL in openPanel.urls {
         
-                            let imageData = NSData(contentsOf: URL as URL)
-                            let imageSource = CGImageSourceCreateWithData(CFBridgingRetain(imageData) as! CFData, nil)
-                            let metaDictionary = CGImageSourceCopyPropertiesAtIndex(imageSource!, 0, nil) as! NSDictionary
-                            let exifData = metaDictionary["{Exif}"] as! NSDictionary
-                            
-                            var dateStringCapture: String?
-                            dateStringCapture = exifData["DateTimeDigitized"] as? String
-                            dateStringCapture = exifData["DateTimeOriginal"] as? String
-                            
-                            if let dateString: String = dateStringCapture {
+                        let imageData = NSData(contentsOf: URL as URL)
+                        let imageSource = CGImageSourceCreateWithData(CFBridgingRetain(imageData) as! CFData, nil)
+                        let metaDictionary = CGImageSourceCopyPropertiesAtIndex(imageSource!, 0, nil) as! NSDictionary
+                        let exifData = metaDictionary["{Exif}"] as! NSDictionary
+                        
+                        var dateStringCapture: String?
+                        dateStringCapture = exifData["DateTimeDigitized"] as? String
+                        dateStringCapture = exifData["DateTimeOriginal"] as? String
+                        
+                        if let dateString: String = dateStringCapture {
 
-                                let newDateString = dateString.replacingOccurrences(of:
-                                    ":",
-                                    with: "-",
-                                    options: String.CompareOptions.literal,
-                                    range: nil
-                                )
-                                
-                                let fileURL = FileURLGroup(
-                                    oldFileURL: URL as URL,
-                                    newFileURL:
-                                        URL.deletingLastPathComponent!
-                                        .appendingPathComponent(newDateString)
-                                        .appendingPathExtension(URL.pathExtension!)
-                                )
-                                
-                                self.fileURLGroups.append(fileURL)
-                            }
+                            let newDateString = dateString.replacingOccurrences(of:
+                                ":",
+                                with: "-",
+                                options: String.CompareOptions.literal,
+                                range: nil
+                            )
+                            
+                            let fileURL = FileURLGroup(
+                                oldFileURL: URL as URL,
+                                newFileURL:
+                                    URL.deletingLastPathComponent()
+                                    .appendingPathComponent(newDateString)
+                                    .appendingPathExtension(URL.pathExtension)
+                            )
+                            
+                            self.fileURLGroups.append(fileURL)
                         }
                     }
                     
