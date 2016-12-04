@@ -21,6 +21,8 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTabViewDelegate
     }
     
     @IBOutlet weak var table: NSTableView!
+    @IBOutlet weak var renameButton: NSButton?
+    @IBOutlet weak var progressIndicator: NSProgressIndicator?
     var fileURLGroups = Array<FileURLGroup>()
     
     func updateUI(){
@@ -37,41 +39,62 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTabViewDelegate
             openPanel.beginSheetModal(for: window, completionHandler: { (result: Int) -> Void in
 
                 if result == NSModalResponseOK {
-                    
-                    for URL in openPanel.urls {
-        
-                        let imageData = NSData(contentsOf: URL as URL)
-                        let imageSource = CGImageSourceCreateWithData(CFBridgingRetain(imageData) as! CFData, nil)
-                        let metaDictionary = CGImageSourceCopyPropertiesAtIndex(imageSource!, 0, nil) as! NSDictionary
-                        let exifData = metaDictionary["{Exif}"] as! NSDictionary
 
-                        if let dateStringCapture = exifData["DateTimeDigitized"] as? String ?? exifData["DateTimeOriginal"] as? String {
+                    self.renameButton?.isEnabled = false
+                    self.progressIndicator?.isHidden = false
+                    self.progressIndicator?.startAnimation(nil)
 
-                            let components = dateStringCapture.components(separatedBy: " ")
+                    DispatchQueue.global(qos: .userInteractive).async {
 
-                            let folderPart = components[0].replacingOccurrences(of: ":", with: "/")
-                            let fileNameToSecond = components[1].replacingOccurrences(of: ":", with: "_")
+                        for (i, URL) in openPanel.urls.enumerated() {
 
-                            if let milliSecondsString = exifData["SubsecTimeDigitized"] as? String ?? exifData["SubsecTimeOriginal"] as? String, let milliSeconds = Int(milliSecondsString) {
+                            let imageData = NSData(contentsOf: URL as URL)
+                            let imageSource = CGImageSourceCreateWithData(CFBridgingRetain(imageData) as! CFData, nil)
+                            let metaDictionary = CGImageSourceCopyPropertiesAtIndex(imageSource!, 0, nil) as! NSDictionary
+                            let exifData = metaDictionary["{Exif}"] as! NSDictionary
 
-                                let newFileName = folderPart + "/" + fileNameToSecond + String(format: "_%03d", milliSeconds)
+                            if let dateStringCapture = exifData["DateTimeDigitized"] as? String ?? exifData["DateTimeOriginal"] as? String {
 
-                                let fileURL = FileURLGroup(
-                                    oldFileURL: URL as URL,
-                                    newFileURL:
-                                    URL.deletingLastPathComponent()
-                                        .appendingPathComponent(newFileName)
-                                        .appendingPathExtension(URL.pathExtension)
-                                )
+                                let components = dateStringCapture.components(separatedBy: " ")
 
-                                self.fileURLGroups.append(fileURL)
+                                let folderPart = components[0].replacingOccurrences(of: ":", with: "/")
+                                let fileNameToSecond = components[1].replacingOccurrences(of: ":", with: "_")
 
+                                if let milliSecondsString = exifData["SubsecTimeDigitized"] as? String ?? exifData["SubsecTimeOriginal"] as? String, let milliSeconds = Int(milliSecondsString) {
+
+                                    let newFileName = folderPart + "/" + fileNameToSecond + String(format: "_%03d", milliSeconds)
+
+                                    let fileURL = FileURLGroup(
+                                        oldFileURL: URL as URL,
+                                        newFileURL:
+                                        URL.deletingLastPathComponent()
+                                            .appendingPathComponent(newFileName)
+                                            .appendingPathExtension(URL.pathExtension)
+                                    )
+                                    
+                                    self.fileURLGroups.append(fileURL)
+                                    
+                                }
+                                
                             }
 
+                            if i % 5 == 0 {
+                                DispatchQueue.main.async {
+                                    self.updateUI()
+                                }
+                            }
+                            
                         }
+
+                        DispatchQueue.main.async {
+                            self.updateUI()
+                            self.renameButton?.isEnabled = true
+                            self.progressIndicator?.isHidden = true
+                            self.progressIndicator?.stopAnimation(nil)
+                        }
+
                     }
-                    
-                    self.updateUI()
+
                 }
             })
         }
