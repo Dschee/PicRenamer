@@ -142,7 +142,7 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTabViewDelegate
         if tableColumn?.identifier == "Before" {
             return self.fileURLGroups[row].oldFileURL.lastPathComponent
         } else if tableColumn?.identifier == "After" {
-            return self.fileURLGroups[row].newFileURL.lastPathComponent
+            return self.fileURLGroups[row].newFileURL.pathComponents.suffix(4).joined(separator: "/")
         } else {
             return nil
         }
