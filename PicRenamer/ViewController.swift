@@ -30,13 +30,13 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTabViewDelegate
     
     @IBAction func openFiles(_ sender: NSButton) {
         let openPanel = NSOpenPanel()
-        openPanel.allowedFileTypes = NSImage.imageFileTypes()
+        openPanel.allowedFileTypes = NSImage.imageTypes()
         openPanel.allowsMultipleSelection = true
         
         if let window = NSApplication.shared().windows.first {
             openPanel.beginSheetModal(for: window, completionHandler: { (result: Int) -> Void in
-                
-                if result == NSOKButton {
+
+                if result == NSModalResponseOK {
                     
                     for URL in openPanel.urls {
         
