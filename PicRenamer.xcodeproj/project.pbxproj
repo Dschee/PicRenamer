@@ -134,6 +134,11 @@
 				CLASSPREFIX = PR;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = PrettyX;
+				TargetAttributes = {
+					EAB5EA7616F4CB6A00FE639D = {
+						LastSwiftMigration = 0810;
+					};
+				};
 			};
 			buildConfigurationList = EAB5EA7216F4CB6A00FE639D /* Build configuration list for PBXProject "PicRenamer" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -269,6 +274,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "PicRenamer/PicRenamer-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -286,6 +292,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "PicRenamer/PicRenamer-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

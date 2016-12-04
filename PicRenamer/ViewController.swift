@@ -11,10 +11,10 @@ import Cocoa
 class ViewController: NSViewController, NSTableViewDataSource, NSTabViewDelegate {
 
     class FileURLGroup {
-        var oldFileURL: NSURL
-        var newFileURL: NSURL
+        var oldFileURL: URL
+        var newFileURL: URL
         
-        init(oldFileURL: NSURL, newFileURL: NSURL) {
+        init(oldFileURL: URL, newFileURL: URL) {
             self.oldFileURL = oldFileURL
             self.newFileURL = newFileURL
         }
@@ -28,43 +28,43 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTabViewDelegate
         self.table.setNeedsDisplay()
     }
     
-    @IBAction func openFiles(sender: NSButton) {
+    @IBAction func openFiles(_ sender: NSButton) {
         var openPanel = NSOpenPanel()
         openPanel.allowedFileTypes = NSImage.imageFileTypes()
         openPanel.allowsMultipleSelection = true
         
-        if let window = NSApplication.sharedApplication().windows.first as? NSWindow {
-            openPanel.beginSheetModalForWindow(window, completionHandler: { (result: Int) -> Void in
+        if let window = NSApplication.shared().windows.first {
+            openPanel.beginSheetModal(for: window, completionHandler: { (result: Int) -> Void in
                 
                 if result == NSOKButton {
                     
-                    for object in openPanel.URLs {
+                    for object in openPanel.urls {
                         if let URL = object as? NSURL {
         
-                            let imageData = NSData(contentsOfURL: URL)
-                            let imageSource = CGImageSourceCreateWithData(CFBridgingRetain(imageData) as CFData, nil)
-                            let metaDictionary = CGImageSourceCopyPropertiesAtIndex(imageSource, 0, nil) as NSDictionary
-                            let exifData = metaDictionary["{Exif}"] as NSDictionary
+                            let imageData = NSData(contentsOf: URL as URL)
+                            let imageSource = CGImageSourceCreateWithData(CFBridgingRetain(imageData) as! CFData, nil)
+                            let metaDictionary = CGImageSourceCopyPropertiesAtIndex(imageSource!, 0, nil) as! NSDictionary
+                            let exifData = metaDictionary["{Exif}"] as! NSDictionary
                             
                             var dateStringCapture: String?
                             dateStringCapture = exifData["DateTimeDigitized"] as? String
                             dateStringCapture = exifData["DateTimeOriginal"] as? String
                             
-                            if let dateString = dateStringCapture {
-                                
-                                let newDateString = dateString.stringByReplacingOccurrencesOfString(
+                            if let dateString: String = dateStringCapture {
+
+                                let newDateString = dateString.replacingOccurrences(of:
                                     ":",
-                                    withString: "-",
-                                    options: NSStringCompareOptions.LiteralSearch,
+                                    with: "-",
+                                    options: String.CompareOptions.literal,
                                     range: nil
                                 )
                                 
                                 let fileURL = FileURLGroup(
-                                    oldFileURL: URL,
+                                    oldFileURL: URL as URL,
                                     newFileURL:
-                                        URL.URLByDeletingLastPathComponent!
-                                        .URLByAppendingPathComponent(newDateString)
-                                        .URLByAppendingPathExtension(URL.pathExtension!)
+                                        URL.deletingLastPathComponent!
+                                        .appendingPathComponent(newDateString)
+                                        .appendingPathExtension(URL.pathExtension!)
                                 )
                                 
                                 self.fileURLGroups.append(fileURL)
@@ -78,27 +78,27 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTabViewDelegate
         }
     }
     
-    @IBAction func renameFiles(sender: NSButton) {
-        let fileManager = NSFileManager.defaultManager()
+    @IBAction func renameFiles(_ sender: NSButton) {
+        let fileManager = FileManager.default
         
         for group in self.fileURLGroups {
-            fileManager.moveItemAtURL(group.oldFileURL, toURL: group.newFileURL, error: nil)
+            try! fileManager.moveItem(at: group.oldFileURL, to: group.newFileURL)
             group.oldFileURL = group.newFileURL
         }
         
         self.updateUI()
     }
     
-    @IBAction func clearFiles(sender: NSButton) {
-        self.fileURLGroups.removeAll(keepCapacity: false)
+    @IBAction func clearFiles(_ sender: NSButton) {
+        self.fileURLGroups.removeAll(keepingCapacity: false)
         self.updateUI()
     }
     
-    func numberOfRowsInTableView(tableView: NSTableView) -> Int {
+    func numberOfRows(in tableView: NSTableView) -> Int {
         return self.fileURLGroups.count
     }
     
-    func tableView(tableView: NSTableView, objectValueForTableColumn tableColumn: NSTableColumn?, row: Int) -> AnyObject? {
+    func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
         if tableColumn?.identifier == "Before" {
             return self.fileURLGroups[row].oldFileURL.lastPathComponent
         } else if tableColumn?.identifier == "After" {
