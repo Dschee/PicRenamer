@@ -44,29 +44,30 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTabViewDelegate
                         let imageSource = CGImageSourceCreateWithData(CFBridgingRetain(imageData) as! CFData, nil)
                         let metaDictionary = CGImageSourceCopyPropertiesAtIndex(imageSource!, 0, nil) as! NSDictionary
                         let exifData = metaDictionary["{Exif}"] as! NSDictionary
-                        
-                        var dateStringCapture: String?
-                        dateStringCapture = exifData["DateTimeDigitized"] as? String
-                        dateStringCapture = exifData["DateTimeOriginal"] as? String
-                        
-                        if let dateString: String = dateStringCapture {
 
-                            let newDateString = dateString.replacingOccurrences(of:
-                                ":",
-                                with: "-",
-                                options: String.CompareOptions.literal,
-                                range: nil
-                            )
-                            
-                            let fileURL = FileURLGroup(
-                                oldFileURL: URL as URL,
-                                newFileURL:
+                        if let dateStringCapture = exifData["DateTimeDigitized"] as? String ?? exifData["DateTimeOriginal"] as? String {
+
+                            let components = dateStringCapture.components(separatedBy: " ")
+
+                            let folderPart = components[0].replacingOccurrences(of: ":", with: "/")
+                            let fileNameToSecond = components[1].replacingOccurrences(of: ":", with: "_")
+
+                            if let milliSecondsString = exifData["SubsecTimeDigitized"] as? String ?? exifData["SubsecTimeOriginal"] as? String, let milliSeconds = Int(milliSecondsString) {
+
+                                let newFileName = folderPart + "/" + fileNameToSecond + String(format: "_%03d", milliSeconds)
+
+                                let fileURL = FileURLGroup(
+                                    oldFileURL: URL as URL,
+                                    newFileURL:
                                     URL.deletingLastPathComponent()
-                                    .appendingPathComponent(newDateString)
-                                    .appendingPathExtension(URL.pathExtension)
-                            )
-                            
-                            self.fileURLGroups.append(fileURL)
+                                        .appendingPathComponent(newFileName)
+                                        .appendingPathExtension(URL.pathExtension)
+                                )
+
+                                self.fileURLGroups.append(fileURL)
+
+                            }
+
                         }
                     }
                     
@@ -80,8 +81,16 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTabViewDelegate
         let fileManager = FileManager.default
         
         for group in self.fileURLGroups {
-            try! fileManager.moveItem(at: group.oldFileURL, to: group.newFileURL)
-            group.oldFileURL = group.newFileURL
+
+            let folderUrl = group.newFileURL.deletingLastPathComponent()
+            if !fileManager.fileExists(atPath: folderUrl.absoluteString.substring(from: "file://".endIndex)) {
+                try! fileManager.createDirectory(at: folderUrl, withIntermediateDirectories: true)
+            }
+
+            if !fileManager.fileExists(atPath: group.newFileURL.absoluteString.substring(from: "file://".endIndex)) {
+                try! fileManager.moveItem(at: group.oldFileURL, to: group.newFileURL)
+                group.oldFileURL = group.newFileURL
+            }
         }
         
         self.updateUI()
