@@ -55,12 +55,10 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTabViewDelegate
 
                         for (i, URL) in openPanel.urls.enumerated() {
 
-                            let imageData = NSData(contentsOf: URL as URL)
-                            let imageSource = CGImageSourceCreateWithData(CFBridgingRetain(imageData) as! CFData, nil)
-                            let metaDictionary = CGImageSourceCopyPropertiesAtIndex(imageSource!, 0, nil) as! NSDictionary
-                            guard let exifData = metaDictionary["{Exif}"] as? NSDictionary else {
-                                continue
-                            }
+                            guard let imageData = NSData(contentsOf: URL as URL) else { continue }
+                            guard let imageSource = CGImageSourceCreateWithData(CFBridgingRetain(imageData) as! CFData, nil) else { continue }
+                            guard let metaDictionary = CGImageSourceCopyPropertiesAtIndex(imageSource, 0, nil) as? NSDictionary else { continue }
+                            guard let exifData = metaDictionary["{Exif}"] as? NSDictionary else { continue }
 
                             if let dateStringCapture = exifData["DateTimeDigitized"] as? String ?? exifData["DateTimeOriginal"] as? String {
 
