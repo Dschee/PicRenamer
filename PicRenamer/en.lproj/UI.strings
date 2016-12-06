@@ -1,0 +1,42 @@
+
+/* Class = "NSWindow"; title = "PicRenamer"; ObjectID = "8rh-hN-1mX"; */
+"8rh-hN-1mX.title" = "PicRenamer";
+
+/* Class = "NSTableColumn"; headerCell.title = "Before"; ObjectID = "Acb-8a-3ag"; */
+"Acb-8a-3ag.headerCell.title" = "Before";
+
+/* Class = "NSMenuItem"; title = "PicRenamer"; ObjectID = "Aq7-YF-9PN"; */
+"Aq7-YF-9PN.title" = "PicRenamer";
+
+/* Class = "NSButtonCell"; title = "Add"; ObjectID = "MUd-v4-pcb"; */
+"MUd-v4-pcb.title" = "Add";
+
+/* Class = "NSButtonCell"; title = "Rename"; ObjectID = "TvI-wk-vfp"; */
+"TvI-wk-vfp.title" = "Rename";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "bFC-Iq-gNi"; */
+"bFC-Iq-gNi.title" = "Text Cell";
+
+/* Class = "NSMenu"; title = "Main Menu"; ObjectID = "h3i-os-lZH"; */
+"h3i-os-lZH.title" = "Main Menu";
+
+/* Class = "NSMenuItem"; title = "About PicRenamer"; ObjectID = "htl-ri-FDQ"; */
+"htl-ri-FDQ.title" = "About PicRenamer";
+
+/* Class = "NSButtonCell"; title = "Clear"; ObjectID = "nXK-BI-GVO"; */
+"nXK-BI-GVO.title" = "Clear";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "opX-x7-7k1"; */
+"opX-x7-7k1.title" = "Text Cell";
+
+/* Class = "NSTextFieldCell"; title = "no images"; ObjectID = "t2P-j6-4hq"; */
+"t2P-j6-4hq.title" = "no images";
+
+/* Class = "NSTableColumn"; headerCell.title = "After"; ObjectID = "tgm-P1-w6a"; */
+"tgm-P1-w6a.headerCell.title" = "After";
+
+/* Class = "NSMenu"; title = "PicRenamer"; ObjectID = "uX5-1W-A25"; */
+"uX5-1W-A25.title" = "PicRenamer";
+
+/* Class = "NSMenuItem"; title = "Quit PicRenamer"; ObjectID = "ubh-Fc-OVL"; */
+"ubh-Fc-OVL.title" = "Quit PicRenamer";

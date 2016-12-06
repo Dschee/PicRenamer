@@ -33,7 +33,7 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTabViewDelegate
     }
 
     func updateImagesCount() {
-        self.imagesCountLabel?.stringValue = "\(self.table.numberOfRows) images"
+        self.imagesCountLabel?.stringValue = String(format: NSLocalizedString("%d images", comment: ""), self.table.numberOfRows)
     }
     
     @IBAction func openFiles(_ sender: NSButton) {
@@ -114,12 +114,22 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTabViewDelegate
 
             let folderUrl = group.newFileURL.deletingLastPathComponent()
             if !fileManager.fileExists(atPath: folderUrl.absoluteString.substring(from: "file://".endIndex)) {
-                try! fileManager.createDirectory(at: folderUrl, withIntermediateDirectories: true)
+                do {
+                    try fileManager.createDirectory(at: folderUrl, withIntermediateDirectories: true)
+                } catch {
+                    continue
+                }
+
             }
 
             if !fileManager.fileExists(atPath: group.newFileURL.absoluteString.substring(from: "file://".endIndex)) {
-                try! fileManager.moveItem(at: group.oldFileURL, to: group.newFileURL)
-                group.oldFileURL = group.newFileURL
+                do {
+                    try fileManager.moveItem(at: group.oldFileURL, to: group.newFileURL)
+                    group.oldFileURL = group.newFileURL
+                } catch {
+                    continue
+                }
+
             }
         }
         

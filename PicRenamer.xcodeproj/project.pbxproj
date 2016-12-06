@@ -10,7 +10,8 @@
 		761921151A9EB21D00D81EB3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761921141A9EB21D00D81EB3 /* ViewController.swift */; };
 		763A41231A9D600000D09E2B /* Image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 763A41221A9D600000D09E2B /* Image.xcassets */; };
 		763A41261A9D660000D09E2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763A41251A9D660000D09E2B /* AppDelegate.swift */; };
-		76AF54A21A9DF7E1001A7724 /* UI.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76AF54A11A9DF7E1001A7724 /* UI.storyboard */; };
+		A1AFAC761DF6702200D7E48B /* UI.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1AFAC781DF6702200D7E48B /* UI.storyboard */; };
+		A1AFAC811DF6710900D7E48B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A1AFAC831DF6710900D7E48B /* Localizable.strings */; };
 		EAB5EA7B16F4CB6A00FE639D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB5EA7A16F4CB6A00FE639D /* Cocoa.framework */; };
 		EAB5EA8516F4CB6A00FE639D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EAB5EA8316F4CB6A00FE639D /* InfoPlist.strings */; };
 		EAB5EA8B16F4CB6A00FE639D /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = EAB5EA8916F4CB6A00FE639D /* Credits.rtf */; };
@@ -21,7 +22,14 @@
 		763A41221A9D600000D09E2B /* Image.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Image.xcassets; sourceTree = "<group>"; };
 		763A41241A9D65FF00D09E2B /* PicRenamer-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PicRenamer-Bridging-Header.h"; sourceTree = "<group>"; };
 		763A41251A9D660000D09E2B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		76AF54A11A9DF7E1001A7724 /* UI.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UI.storyboard; sourceTree = "<group>"; };
+		A1AFAC741DF66FFA00D7E48B /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A1AFAC751DF66FFA00D7E48B /* de */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = de; path = de.lproj/Credits.rtf; sourceTree = "<group>"; };
+		A1AFAC7A1DF6703300D7E48B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/UI.storyboard; sourceTree = "<group>"; };
+		A1AFAC7C1DF6703F00D7E48B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/UI.strings; sourceTree = "<group>"; };
+		A1AFAC7D1DF6704300D7E48B /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/UI.strings; sourceTree = "<group>"; };
+		A1AFAC821DF6710900D7E48B /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A1AFAC841DF6710C00D7E48B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A1AFAC851DF6710D00D7E48B /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EAB5EA7716F4CB6A00FE639D /* PicRenamer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PicRenamer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAB5EA7A16F4CB6A00FE639D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		EAB5EA7D16F4CB6A00FE639D /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -86,7 +94,7 @@
 			children = (
 				763A41251A9D660000D09E2B /* AppDelegate.swift */,
 				761921141A9EB21D00D81EB3 /* ViewController.swift */,
-				76AF54A11A9DF7E1001A7724 /* UI.storyboard */,
+				A1AFAC781DF6702200D7E48B /* UI.storyboard */,
 				763A41221A9D600000D09E2B /* Image.xcassets */,
 				EAB5EA8116F4CB6A00FE639D /* Supporting Files */,
 			);
@@ -101,6 +109,7 @@
 				EAB5EA8316F4CB6A00FE639D /* InfoPlist.strings */,
 				EAB5EA8816F4CB6A00FE639D /* PicRenamer-Prefix.pch */,
 				EAB5EA8916F4CB6A00FE639D /* Credits.rtf */,
+				A1AFAC831DF6710900D7E48B /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -115,6 +124,7 @@
 				EAB5EA7316F4CB6A00FE639D /* Sources */,
 				EAB5EA7416F4CB6A00FE639D /* Frameworks */,
 				EAB5EA7516F4CB6A00FE639D /* Resources */,
+				A1AFAC7E1DF670CC00D7E48B /* BartyCrouch */,
 			);
 			buildRules = (
 			);
@@ -146,6 +156,8 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				de,
+				Base,
 			);
 			mainGroup = EAB5EA6E16F4CB6A00FE639D;
 			productRefGroup = EAB5EA7816F4CB6A00FE639D /* Products */;
@@ -162,14 +174,32 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1AFAC811DF6710900D7E48B /* Localizable.strings in Resources */,
 				EAB5EA8516F4CB6A00FE639D /* InfoPlist.strings in Resources */,
 				EAB5EA8B16F4CB6A00FE639D /* Credits.rtf in Resources */,
-				76AF54A21A9DF7E1001A7724 /* UI.storyboard in Resources */,
+				A1AFAC761DF6702200D7E48B /* UI.storyboard in Resources */,
 				763A41231A9D600000D09E2B /* Image.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A1AFAC7E1DF670CC00D7E48B /* BartyCrouch */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = BartyCrouch;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which bartycrouch > /dev/null; then\n    # Incrementally update all Storyboards/XIBs strings files\n    bartycrouch interfaces -p \"$PROJECT_DIR\"\n\n    # Add new keys to Localizable.strings files from NSLocalizedString in code\n    bartycrouch code -p \"$PROJECT_DIR\" -l \"$PROJECT_DIR\" -a\nelse\n    echo \"warning: BartyCrouch not installed, download it from https://github.com/Flinesoft/BartyCrouch\"\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EAB5EA7316F4CB6A00FE639D /* Sources */ = {
@@ -184,10 +214,31 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		A1AFAC781DF6702200D7E48B /* UI.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A1AFAC7A1DF6703300D7E48B /* Base */,
+				A1AFAC7C1DF6703F00D7E48B /* en */,
+				A1AFAC7D1DF6704300D7E48B /* de */,
+			);
+			name = UI.storyboard;
+			sourceTree = "<group>";
+		};
+		A1AFAC831DF6710900D7E48B /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A1AFAC821DF6710900D7E48B /* Base */,
+				A1AFAC841DF6710C00D7E48B /* en */,
+				A1AFAC851DF6710D00D7E48B /* de */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		EAB5EA8316F4CB6A00FE639D /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				EAB5EA8416F4CB6A00FE639D /* en */,
+				A1AFAC741DF66FFA00D7E48B /* de */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -196,6 +247,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				EAB5EA8A16F4CB6A00FE639D /* en */,
+				A1AFAC751DF66FFA00D7E48B /* de */,
 			);
 			name = Credits.rtf;
 			sourceTree = "<group>";
@@ -207,6 +259,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -248,6 +301,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;

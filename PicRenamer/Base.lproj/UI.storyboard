@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="06O-hx-j2L">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Application-->
+        <scene sceneID="O8u-ah-Zua">
+            <objects>
+                <application id="yF3-HT-JVn" sceneMemberID="viewController">
+                    <menu key="mainMenu" title="Main Menu" systemMenu="main" id="h3i-os-lZH">
+                        <items>
+                            <menuItem title="PicRenamer" id="Aq7-YF-9PN">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="PicRenamer" systemMenu="apple" id="uX5-1W-A25">
+                                    <items>
+                                        <menuItem title="About PicRenamer" id="htl-ri-FDQ">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="orderFrontStandardAboutPanel:" target="Vo4-cb-xli" id="CJ7-YO-y1v"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="Cs0-qN-zYp"/>
+                                        <menuItem title="Quit PicRenamer" keyEquivalent="q" id="ubh-Fc-OVL">
+                                            <connections>
+                                                <action selector="terminate:" target="Vo4-cb-xli" id="bJP-yi-E2s"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                        </items>
+                    </menu>
+                    <connections>
+                        <outlet property="delegate" destination="acX-Eh-DKx" id="04I-El-Fkw"/>
+                    </connections>
+                </application>
+                <customObject id="Vo4-cb-xli" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <customObject id="acX-Eh-DKx" customClass="AppDelegate" customModule="PicRenamer" customModuleProvider="target"/>
+            </objects>
+            <point key="canvasLocation" x="65" y="-125"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="ZHM-pp-sfv">
+            <objects>
+                <windowController id="06O-hx-j2L" sceneMemberID="viewController">
+                    <window key="window" title="PicRenamer" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="8rh-hN-1mX">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
+                        <rect key="contentRect" x="397" y="179" width="500" height="400"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+                        <value key="minSize" type="size" width="500" height="400"/>
+                        <value key="maxSize" type="size" width="500" height="400"/>
+                    </window>
+                    <connections>
+                        <segue destination="YNJ-LP-UIo" kind="relationship" relationship="window.shadowedContentViewController" id="jp5-75-yom"/>
+                    </connections>
+                </windowController>
+                <customObject id="Dbf-7Y-K7C" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="87" y="324"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="DQx-An-N7h">
+            <objects>
+                <viewController id="YNJ-LP-UIo" customClass="ViewController" customModule="PicRenamer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="RCi-8l-IGj">
+                        <rect key="frame" x="0.0" y="0.0" width="566" height="447"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <visualEffectView appearanceType="vibrantLight" blendingMode="behindWindow" material="appearanceBased" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="yFT-zd-ms8">
+                                <rect key="frame" x="0.0" y="0.0" width="566" height="447"/>
+                                <subviews>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ncu-yx-8Ol">
+                                        <rect key="frame" x="137" y="8" width="93" height="25"/>
+                                        <buttonCell key="cell" type="squareTextured" title="Clear" bezelStyle="texturedSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nXK-BI-GVO">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="clearFiles:" target="YNJ-LP-UIo" id="CS9-mJ-Whq"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mUH-MG-sRb">
+                                        <rect key="frame" x="20" y="8" width="109" height="25"/>
+                                        <buttonCell key="cell" type="squareTextured" title="Add" bezelStyle="texturedSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="MUd-v4-pcb">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="openFiles:" target="YNJ-LP-UIo" id="Nw3-xs-QYU"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TPE-nc-3FZ">
+                                        <rect key="frame" x="442" y="8" width="104" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="104" id="Bfh-xI-KoM"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="squareTextured" title="Rename" bezelStyle="texturedSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="TvI-wk-vfp">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="renameFiles:" target="YNJ-LP-UIo" id="IWJ-oz-5Wd"/>
+                                        </connections>
+                                    </button>
+                                    <scrollView autohidesScrollers="YES" horizontalLineScroll="23" horizontalPageScroll="10" verticalLineScroll="23" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z3o-Pj-iI6">
+                                        <rect key="frame" x="20" y="43" width="526" height="384"/>
+                                        <clipView key="contentView" drawsBackground="NO" id="2Mf-ov-eZr">
+                                            <rect key="frame" x="1" y="0.0" width="524" height="383"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <tableView focusRingType="none" appearanceType="vibrantLight" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" headerView="LSp-bQ-ZU4" id="4qC-Ms-ieM">
+                                                    <rect key="frame" x="0.0" y="0.0" width="524" height="360"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <size key="intercellSpacing" width="3" height="6"/>
+                                                    <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    <tableViewGridLines key="gridStyleMask" vertical="YES" dashed="YES"/>
+                                                    <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                                    <tableColumns>
+                                                        <tableColumn identifier="Before" editable="NO" width="218.7265625" minWidth="40" maxWidth="1000" id="Acb-8a-3ag">
+                                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Before">
+                                                                <font key="font" metaFont="smallSystem"/>
+                                                                <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                                            </tableHeaderCell>
+                                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="opX-x7-7k1">
+                                                                <font key="font" metaFont="system"/>
+                                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                            </textFieldCell>
+                                                            <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                        </tableColumn>
+                                                        <tableColumn identifier="After" editable="NO" width="299.5" minWidth="40" maxWidth="1000" id="tgm-P1-w6a">
+                                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="After">
+                                                                <font key="font" metaFont="smallSystem"/>
+                                                                <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                                            </tableHeaderCell>
+                                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="bFC-Iq-gNi">
+                                                                <font key="font" metaFont="system"/>
+                                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                            </textFieldCell>
+                                                            <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                        </tableColumn>
+                                                    </tableColumns>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="YNJ-LP-UIo" id="FcB-kW-WEx"/>
+                                                        <outlet property="delegate" destination="YNJ-LP-UIo" id="yhS-K9-Ct7"/>
+                                                    </connections>
+                                                </tableView>
+                                            </subviews>
+                                            <nil key="backgroundColor"/>
+                                        </clipView>
+                                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="9cV-kG-hKE">
+                                            <rect key="frame" x="1" y="119" width="223" height="15"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </scroller>
+                                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="DjD-tA-Y8C">
+                                            <rect key="frame" x="224" y="17" width="15" height="102"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </scroller>
+                                        <tableHeaderView key="headerView" id="LSp-bQ-ZU4">
+                                            <rect key="frame" x="0.0" y="0.0" width="524" height="23"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableHeaderView>
+                                    </scrollView>
+                                    <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="QHO-OS-ErV">
+                                        <rect key="frame" x="418" y="14" width="16" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="16" id="f7b-WJ-clm"/>
+                                            <constraint firstAttribute="height" constant="16" id="gxP-Qe-4qa"/>
+                                        </constraints>
+                                    </progressIndicator>
+                                    <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3CV-4G-4XD">
+                                        <rect key="frame" x="236" y="14" width="176" height="17"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="172" id="Baw-bg-IU1"/>
+                                            <constraint firstAttribute="height" constant="17" id="bGm-7i-S5G"/>
+                                        </constraints>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="no images" id="t2P-j6-4hq">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="z3o-Pj-iI6" secondAttribute="trailing" constant="20" id="LKC-T5-qc9"/>
+                                    <constraint firstAttribute="bottom" secondItem="TPE-nc-3FZ" secondAttribute="bottom" constant="10" id="Ps8-I8-Jic"/>
+                                    <constraint firstItem="Ncu-yx-8Ol" firstAttribute="width" secondItem="TPE-nc-3FZ" secondAttribute="width" constant="-11" id="TVV-77-PjO"/>
+                                    <constraint firstAttribute="bottom" secondItem="z3o-Pj-iI6" secondAttribute="bottom" constant="43" id="TlW-4X-jPh"/>
+                                    <constraint firstItem="QHO-OS-ErV" firstAttribute="leading" secondItem="3CV-4G-4XD" secondAttribute="trailing" constant="8" id="ULn-lo-dGa"/>
+                                    <constraint firstItem="Ncu-yx-8Ol" firstAttribute="width" secondItem="mUH-MG-sRb" secondAttribute="width" constant="-16" id="XWh-Zs-zgU"/>
+                                    <constraint firstAttribute="trailing" secondItem="TPE-nc-3FZ" secondAttribute="trailing" constant="20" id="aZs-v2-lMm"/>
+                                    <constraint firstItem="z3o-Pj-iI6" firstAttribute="top" secondItem="yFT-zd-ms8" secondAttribute="top" constant="20" id="bAY-So-m3c"/>
+                                    <constraint firstItem="TPE-nc-3FZ" firstAttribute="leading" secondItem="QHO-OS-ErV" secondAttribute="trailing" constant="8" id="cIg-jM-MfS"/>
+                                    <constraint firstAttribute="bottom" secondItem="mUH-MG-sRb" secondAttribute="bottom" constant="10" id="d5y-Je-ThV"/>
+                                    <constraint firstAttribute="bottom" secondItem="3CV-4G-4XD" secondAttribute="bottom" constant="14" id="ejF-NS-rLh"/>
+                                    <constraint firstAttribute="bottom" secondItem="QHO-OS-ErV" secondAttribute="bottom" constant="14" id="f6e-xg-HtU"/>
+                                    <constraint firstAttribute="bottom" secondItem="Ncu-yx-8Ol" secondAttribute="bottom" constant="10" id="jQ4-so-4tx"/>
+                                    <constraint firstItem="Ncu-yx-8Ol" firstAttribute="leading" secondItem="mUH-MG-sRb" secondAttribute="trailing" constant="8" id="xDV-1t-Wwl"/>
+                                    <constraint firstItem="z3o-Pj-iI6" firstAttribute="leading" secondItem="yFT-zd-ms8" secondAttribute="leading" constant="20" id="yCr-MD-FrX"/>
+                                    <constraint firstItem="mUH-MG-sRb" firstAttribute="leading" secondItem="yFT-zd-ms8" secondAttribute="leading" constant="20" id="zMa-78-VT0"/>
+                                </constraints>
+                            </visualEffectView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="yFT-zd-ms8" firstAttribute="top" secondItem="RCi-8l-IGj" secondAttribute="top" id="96e-PV-adT"/>
+                            <constraint firstAttribute="trailing" secondItem="yFT-zd-ms8" secondAttribute="trailing" id="MuF-XQ-GVq"/>
+                            <constraint firstItem="yFT-zd-ms8" firstAttribute="leading" secondItem="RCi-8l-IGj" secondAttribute="leading" id="osn-ba-h9u"/>
+                            <constraint firstAttribute="bottom" secondItem="yFT-zd-ms8" secondAttribute="bottom" id="uhB-gU-jKB"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imagesCountLabel" destination="3CV-4G-4XD" id="LMv-hL-v7I"/>
+                        <outlet property="progressIndicator" destination="QHO-OS-ErV" id="ytC-lt-u2F"/>
+                        <outlet property="renameButton" destination="TPE-nc-3FZ" id="igl-US-1LH"/>
+                        <outlet property="table" destination="4qC-Ms-ieM" id="LFK-I6-sdC"/>
+                    </connections>
+                </viewController>
+                <customObject id="JDg-oa-BpI" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="120" y="933.5"/>
+        </scene>
+    </scenes>
+</document>
