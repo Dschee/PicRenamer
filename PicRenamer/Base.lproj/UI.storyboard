@@ -73,7 +73,7 @@
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ncu-yx-8Ol">
                                         <rect key="frame" x="137" y="8" width="93" height="25"/>
-                                        <buttonCell key="cell" type="squareTextured" title="Clear" bezelStyle="texturedSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nXK-BI-GVO">
+                                        <buttonCell key="cell" type="roundTextured" title="Clear" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nXK-BI-GVO">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
@@ -83,7 +83,7 @@
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mUH-MG-sRb">
                                         <rect key="frame" x="20" y="8" width="109" height="25"/>
-                                        <buttonCell key="cell" type="squareTextured" title="Add" bezelStyle="texturedSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="MUd-v4-pcb">
+                                        <buttonCell key="cell" type="roundTextured" title="Add" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="MUd-v4-pcb">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
@@ -96,7 +96,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="104" id="Bfh-xI-KoM"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="squareTextured" title="Rename" bezelStyle="texturedSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="TvI-wk-vfp">
+                                        <buttonCell key="cell" type="roundTextured" title="Rename" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="TvI-wk-vfp">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
@@ -154,7 +154,7 @@
                                             <nil key="backgroundColor"/>
                                         </clipView>
                                         <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="9cV-kG-hKE">
-                                            <rect key="frame" x="1" y="119" width="223" height="15"/>
+                                            <rect key="frame" x="2" y="366" width="522" height="16"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="DjD-tA-Y8C">
